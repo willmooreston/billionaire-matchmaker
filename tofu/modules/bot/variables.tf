@@ -9,7 +9,7 @@ variable "project_name" {
 
 variable "image_uri" {
   type        = string
-  description = "Full ECR image URI including tag, e.g. 123456789012.dkr.ecr.us-east-1.amazonaws.com/billionaire-matchmaker:abc1234"
+  description = "Full ECR image URI including tag, e.g. 123456789012.dkr.ecr.us-west-2.amazonaws.com/billionaire-matchmaker:abc1234"
 }
 
 variable "schedule_expression" {

@@ -1,9 +1,9 @@
 # Copy to terraform.tfvars (gitignored) and fill in your values.
 
-aws_region = "us-east-1"
+aws_region = "us-west-2"
 
 # image_uri is set automatically by deploy.sh; set manually only if needed.
-# image_uri = "123456789012.dkr.ecr.us-east-1.amazonaws.com/billionaire-matchmaker:abc1234"
+# image_uri = "123456789012.dkr.ecr.us-west-2.amazonaws.com/billionaire-matchmaker:abc1234"
 
 # Posting schedule.
 # "rate(1 day)"     → once per day (production default)

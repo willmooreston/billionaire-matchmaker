@@ -76,6 +76,14 @@ aws ssm put-parameter --name /billionaire-matchmaker/bluesky-app-password \
 
 Create the Bluesky app password at: Settings → Privacy and Security → App Passwords
 
+## Bot label (one-time, after first deploy)
+
+The Bluesky "bot" self-label cannot be set in the UI — apply it via:
+
+```bash
+python3 scripts/set_bot_label.py billionaire-match.bsky.social xxxx-xxxx-xxxx-xxxx
+```
+
 ## Post format
 
 ```

@@ -102,6 +102,16 @@ aws lambda invoke \
 
 Or trigger via **GitHub Actions → post-now** (workflow_dispatch).
 
+### 6. Apply bot label (one-time)
+
+The Bluesky "bot" self-label isn't settable in the UI — apply it via the API:
+
+```bash
+python3 scripts/set_bot_label.py billionaire-match.bsky.social xxxx-xxxx-xxxx-xxxx
+```
+
+This marks the profile with a visible "Bot" badge and lets users filter it from their feeds.
+
 ## Posting cadence
 
 Configure in `tofu/terraform.tfvars`, then redeploy:

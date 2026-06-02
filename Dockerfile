@@ -1,6 +1,6 @@
 FROM public.ecr.aws/lambda/python:3.14
 
-RUN dnf install -y dejavu-fonts-all && dnf clean all
+RUN dnf install -y dejavu-fonts-all zlib-devel libjpeg-turbo-devel gcc python3-devel && dnf clean all
 
 COPY lambda/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

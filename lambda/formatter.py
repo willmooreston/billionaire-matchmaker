@@ -18,9 +18,11 @@ def build_post(billionaire: dict, charity: dict) -> tuple[str, list[dict]]:
         f"${net_worth / 1_000_000_000:.0f}B as of {year} "
         f"(source: {billionaire['source_label']})."
     )
+    charity_year = charity.get("snapshot_year", "")
+    year_suffix = f", {charity_year} data" if charity_year else ""
     line2 = (
         f"That's {years_funded:,} years of funding for "
-        f"{charity['name'].title()} ({revenue_str}/yr budget)."
+        f"{charity['name']} ({revenue_str}/yr budget{year_suffix})."
     )
 
     post_text = f"{line1}\n\n{line2}{_HASHTAG}"
@@ -32,8 +34,8 @@ def _build_facets(text: str, billionaire: dict, charity: dict) -> list[dict]:
     encoded = text.encode("utf-8")
     facets = []
     facets += _find_facets(encoded, billionaire["name"], billionaire["source_url"])
-    charity_name = charity["name"].title()
-    charity_url = charity.get("permalink", "")
+    charity_name = charity["name"]
+    charity_url = charity.get("source_url", "")
     if charity_url:
         facets += _find_facets(encoded, charity_name, charity_url)
     return facets

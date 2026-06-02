@@ -1,39 +1,20 @@
+import json
+import os
 import random
-import requests
 
-PROPUBLICA_BASE = "https://projects.propublica.org/nonprofits/api/v2"
+_DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "charities.json")
 
-# NTEE major group codes that make for compelling posts
-_NTEE_CATEGORIES = ["A", "B", "C", "D", "E", "F", "K", "L", "M", "O", "P", "Q", "R"]
-
-
-def _search(ntee_code: str, per_page: int = 100) -> list[dict]:
-    url = f"{PROPUBLICA_BASE}/search.json"
-    resp = requests.get(
-        url,
-        params={"ntee[id]": ntee_code, "per_page": per_page},
-        timeout=10,
-    )
-    resp.raise_for_status()
-    return resp.json().get("organizations", [])
+with open(_DATA_FILE) as _f:
+    _CHARITIES = json.load(_f)
 
 
 def find_qualifying(net_worth_usd: int, min_years: int = 100) -> dict | None:
-    """Return a random charity whose annual revenue, multiplied by min_years, is <= net_worth_usd."""
-    categories = _NTEE_CATEGORIES.copy()
-    random.shuffle(categories)
-
-    for category in categories:
-        orgs = _search(category)
-        qualifying = [
-            o for o in orgs
-            if o.get("total_revenue") and o["total_revenue"] > 0
-            and net_worth_usd >= o["total_revenue"] * min_years
-        ]
-        if qualifying:
-            return random.choice(qualifying)
-
-    return None
+    """Return a random charity whose annual revenue * min_years <= net_worth_usd."""
+    qualifying = [
+        c for c in _CHARITIES
+        if net_worth_usd >= c["total_revenue"] * min_years
+    ]
+    return random.choice(qualifying) if qualifying else None
 
 
 def format_revenue(revenue_usd: int) -> str:

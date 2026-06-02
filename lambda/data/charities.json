@@ -1,0 +1,240 @@
+[
+  {
+    "name": "GLSEN",
+    "ein": "43234202",
+    "total_revenue": 7006897,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/43234202"
+  },
+  {
+    "name": "Electronic Frontier Foundation",
+    "ein": "43091431",
+    "total_revenue": 17954838,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/43091431"
+  },
+  {
+    "name": "Children's Defense Fund",
+    "ein": "520895622",
+    "total_revenue": 23484456,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/520895622"
+  },
+  {
+    "name": "NAACP Legal Defense Fund",
+    "ein": "131655255",
+    "total_revenue": 29467489,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/131655255"
+  },
+  {
+    "name": "Lambda Legal Defense and Education Fund",
+    "ein": "237395681",
+    "total_revenue": 35364569,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/237395681"
+  },
+  {
+    "name": "National Alliance on Mental Illness",
+    "ein": "431201653",
+    "total_revenue": 38156209,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/431201653"
+  },
+  {
+    "name": "Big Brothers Big Sisters of America",
+    "ein": "231365190",
+    "total_revenue": 47205552,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/231365190"
+  },
+  {
+    "name": "United Way Worldwide",
+    "ein": "131635294",
+    "total_revenue": 51568253,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/131635294"
+  },
+  {
+    "name": "Center for Reproductive Rights",
+    "ein": "133669731",
+    "total_revenue": 56260101,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/133669731"
+  },
+  {
+    "name": "Oxfam America",
+    "ein": "237069110",
+    "total_revenue": 83115051,
+    "snapshot_year": 2024,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/237069110"
+  },
+  {
+    "name": "Human Rights Watch",
+    "ein": "132875808",
+    "total_revenue": 94185941,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/132875808"
+  },
+  {
+    "name": "Khan Academy",
+    "ein": "261544963",
+    "total_revenue": 98267721,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/261544963"
+  },
+  {
+    "name": "Brennan Center for Justice",
+    "ein": "133839293",
+    "total_revenue": 110506866,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/133839293"
+  },
+  {
+    "name": "Earthjustice",
+    "ein": "941730465",
+    "total_revenue": 125960142,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/941730465"
+  },
+  {
+    "name": "Southern Poverty Law Center",
+    "ein": "630598743",
+    "total_revenue": 169857376,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/630598743"
+  },
+  {
+    "name": "Boys & Girls Clubs of America",
+    "ein": "135562976",
+    "total_revenue": 170722923,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/135562976"
+  },
+  {
+    "name": "Sierra Club Foundation",
+    "ein": "941153307",
+    "total_revenue": 173425083,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/941153307"
+  },
+  {
+    "name": "Wikimedia Foundation",
+    "ein": "200049703",
+    "total_revenue": 180199672,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/200049703"
+  },
+  {
+    "name": "Natural Resources Defense Council",
+    "ein": "132654926",
+    "total_revenue": 193144386,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/132654926"
+  },
+  {
+    "name": "Environmental Defense Fund",
+    "ein": "116107128",
+    "total_revenue": 247057586,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/116107128"
+  },
+  {
+    "name": "National Public Radio",
+    "ein": "520907625",
+    "total_revenue": 302474004,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/520907625"
+  },
+  {
+    "name": "World Wildlife Fund",
+    "ein": "521693387",
+    "total_revenue": 372835343,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/521693387"
+  },
+  {
+    "name": "Legal Aid Society",
+    "ein": "135562265",
+    "total_revenue": 376584946,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/135562265"
+  },
+  {
+    "name": "Planned Parenthood Federation of America",
+    "ein": "131644147",
+    "total_revenue": 378167827,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/131644147"
+  },
+  {
+    "name": "American Cancer Society",
+    "ein": "131788491",
+    "total_revenue": 656838115,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/131788491"
+  },
+  {
+    "name": "Doctors Without Borders USA",
+    "ein": "133433452",
+    "total_revenue": 767362916,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/133433452"
+  },
+  {
+    "name": "UNICEF USA",
+    "ein": "131760110",
+    "total_revenue": 829050932,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/131760110"
+  },
+  {
+    "name": "CARE USA",
+    "ein": "131685039",
+    "total_revenue": 909098267,
+    "snapshot_year": 2024,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/131685039"
+  },
+  {
+    "name": "American Heart Association",
+    "ein": "135613797",
+    "total_revenue": 925828648,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/135613797"
+  },
+  {
+    "name": "The Nature Conservancy",
+    "ein": "530242652",
+    "total_revenue": 1166010019,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/530242652"
+  },
+  {
+    "name": "St. Jude Children's Research Hospital",
+    "ein": "620646012",
+    "total_revenue": 1707244071,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/620646012"
+  },
+  {
+    "name": "Direct Relief",
+    "ein": "951831116",
+    "total_revenue": 2266763483,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/951831116"
+  },
+  {
+    "name": "American National Red Cross",
+    "ein": "530196605",
+    "total_revenue": 3217077611,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/530196605"
+  },
+  {
+    "name": "Feeding America",
+    "ein": "363673599",
+    "total_revenue": 4916912461,
+    "snapshot_year": 2023,
+    "source_url": "https://projects.propublica.org/nonprofits/organizations/363673599"
+  }
+]

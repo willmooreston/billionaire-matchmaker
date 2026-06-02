@@ -1,13 +1,14 @@
 # billionaire-matchmaker
 
 Bluesky bot that matches a random US billionaire's net worth against a random US charity,
-showing how many years that fortune would fund the charity, plus a public-domain anti-greed quote.
+showing how many years that fortune would fund the charity, plus a public-domain anti-greed
+quote rendered as an attached image.
 
 ## Stack
 
 - **Runtime**: Python 3.14 Lambda container image (via ECR)
 - **IaC**: OpenTofu (`tofu/`)
-- **Scheduler**: EventBridge Scheduler → Lambda
+- **Scheduler**: EventBridge Scheduler → Lambda (daily, ~03:18 UTC)
 - **Secrets**: SSM Parameter Store SecureString
 - **CI**: GitHub Actions (OIDC, no stored creds)
 
@@ -15,10 +16,15 @@ showing how many years that fortune would fund the charity, plus a public-domain
 
 ```
 lambda/          Python app code + bundled data
+  data/
+    billionaires.json   Forbes 2025 snapshot (~100 US billionaires)
+    charities.json      34 curated US nonprofits with IRS 990 revenue data
+    quotes.json         91 public-domain anti-greed quotes
 tofu/            OpenTofu root + modules
   modules/
     bootstrap/   One-time: S3 state bucket + GitHub OIDC
     bot/         Lambda, ECR, EventBridge, SSM, CloudWatch, IAM
+tests/           Offline smoke tests (pytest)
 Dockerfile       Lambda container image
 deploy.sh        Local build + deploy
 ```
@@ -26,6 +32,10 @@ deploy.sh        Local build + deploy
 ## Common commands
 
 ```bash
+# Run smoke tests before deploying
+pip install -r requirements-dev.txt
+pytest tests/ -v
+
 # Bootstrap (one-time, run before first tofu apply)
 cd tofu/modules/bootstrap && tofu init && tofu apply
 
@@ -33,7 +43,9 @@ cd tofu/modules/bootstrap && tofu init && tofu apply
 ./deploy.sh
 
 # Invoke Lambda immediately
-aws lambda invoke --function-name billionaire-matchmaker /tmp/out.json && cat /tmp/out.json
+aws lambda invoke --function-name billionaire-matchmaker \
+  --payload '{}' --cli-binary-format raw-in-base64-out \
+  /tmp/out.json && cat /tmp/out.json
 
 # Tail Lambda logs
 aws logs tail /aws/lambda/billionaire-matchmaker --follow
@@ -41,11 +53,14 @@ aws logs tail /aws/lambda/billionaire-matchmaker --follow
 
 ## Data files
 
-- `lambda/data/billionaires.json` — curated Forbes snapshot (~100 US billionaires, 2025)
-- `lambda/data/quotes.json` — public-domain anti-greed quotes (pre-1928 authors or federal works)
-
-Update billionaires.json annually after Forbes releases its list. Net worths are intentionally
-snapshot values, not live-scraped — stable and reproducible.
+- `lambda/data/billionaires.json` — curated Forbes snapshot (~100 US billionaires, 2025).
+  Update annually after Forbes releases its list. Net worths are intentionally snapshot
+  values, not live-scraped.
+- `lambda/data/charities.json` — 34 curated US nonprofits with annual revenue from IRS 990
+  filings via ProPublica. Update annually. Do NOT use the ProPublica search API at runtime —
+  the `ntee[id]` filter returns 500 and the search endpoint omits revenue data entirely.
+- `lambda/data/quotes.json` — 91 public-domain anti-greed quotes (pre-1928 authors or
+  federal government works).
 
 ## Secrets setup (before first post)
 
@@ -53,7 +68,7 @@ After deploying infrastructure, overwrite the placeholder SSM values:
 
 ```bash
 aws ssm put-parameter --name /billionaire-matchmaker/bluesky-handle \
-  --value "yourbot.bsky.social" --type SecureString --overwrite
+  --value "billionaire-match.bsky.social" --type SecureString --overwrite
 
 aws ssm put-parameter --name /billionaire-matchmaker/bluesky-app-password \
   --value "xxxx-xxxx-xxxx-xxxx" --type SecureString --overwrite
@@ -66,19 +81,23 @@ Create the Bluesky app password at: Settings → Privacy and Security → App Pa
 ```
 [Name] has a net worth of $[X]B as of [year] (source: Forbes).
 
-That's [Y] years of funding for [Charity Name] ($[Z]M/yr budget).
-
-"[Quote]" — [Author]
+That's [Y] years of funding for [Charity Name] ($[Z]M/yr budget, [year] data).
 
 #eattherich
 ```
 
-Posts are capped at 300 graphemes (Bluesky limit). Quotes are truncated with "…" if needed.
-Charity name is hyperlinked to ProPublica. Billionaire name is hyperlinked to Forbes profile.
+- Post text is capped at 300 graphemes (Bluesky limit).
+- Billionaire name is hyperlinked to their Forbes profile.
+- Charity name is hyperlinked to their ProPublica page.
+- Quote is rendered as a 1200×630 PNG image (dark navy, DejaVu fonts) and attached to the post.
+- Replies are disabled via a threadgate record (same rkey as the post).
 
 ## Design constraints
 
 - All AWS services stay within free tier
-- No live scraping — billionaire data is a static JSON snapshot updated manually
+- No live scraping — all data is static JSON updated manually
 - Lambda runs as container image (not zip) to showcase ECR/Docker skills
 - EventBridge schedule is configurable via tfvar (`schedule_expression`)
+- Docker image must be built with `--platform linux/amd64 --provenance=false`
+  (`--provenance=false` prevents OCI manifest format that Lambda rejects)
+- Pillow requires `freetype-devel` at image build time (no pre-built wheel for Python 3.14)

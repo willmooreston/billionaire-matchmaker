@@ -1,37 +1,36 @@
 # billionaire-matchmaker
 
-A Bluesky bot that takes a random US billionaire's net worth, finds a random US charity whose annual
-budget that fortune would fund for 100+ years, shows the math with cited sources, and closes with a
-public-domain quote.
+A daily Bluesky bot that picks a random US billionaire, finds a charity their net worth
+would fund for 100+ years, and shows the math — with a public-domain anti-greed quote
+attached as an image. Posts once a day to [@billionaire-match.bsky.social](https://bsky.app/profile/billionaire-match.bsky.social).
 
-**Stack:** Python 3.14 · AWS Lambda (container image) · EventBridge Scheduler · SSM Parameter Store
-· OpenTofu · GitHub Actions
+**Stack:** Python 3.14 · AWS Lambda (container image) · Amazon ECR · EventBridge Scheduler
+· SSM Parameter Store · OpenTofu · GitHub Actions (OIDC)
 
 ## Sample post
 
-```
-Elon Musk has a net worth of $300B as of 2025 (source: Forbes).
+> Stan Kroenke has a net worth of $15B as of 2025 (source: Forbes).
+>
+> That's 136 years of funding for Brennan Center for Justice ($110.5M/yr budget, 2023 data).
+>
+> #eattherich
 
-That's 2,142 years of funding for Meals On Wheels America ($140M/yr budget).
-
-"Of all forms of tyranny the least attractive and the most vulgar is the
-tyranny of mere wealth, the tyranny of a plutocracy." — Theodore Roosevelt, 1906
-
-#eattherich
-```
+A quote image (1200×630 PNG) is attached to every post. Replies are disabled.
 
 ## Architecture
 
 ```
-EventBridge Scheduler (daily)
+EventBridge Scheduler (rate: 1 day)
         │
         ▼
-AWS Lambda  ──── SSM Parameter Store (Bluesky credentials)
-(Python 3.14     ├── data/billionaires.json (bundled, ~100 US billionaires)
- container)      ├── ProPublica Nonprofit Explorer API (charity data)
-        │        └── data/quotes.json (bundled, ~75 public-domain quotes)
-        ▼
-   bsky.social (AT Protocol)
+AWS Lambda (Python 3.14 container)
+        ├── SSM Parameter Store → Bluesky credentials
+        ├── data/billionaires.json → random billionaire
+        ├── data/charities.json   → random qualifying charity
+        └── data/quotes.json      → random public-domain quote
+        │
+        ├── Pillow → renders quote as 1200×630 PNG
+        └── AT Protocol API → post + image + threadgate (disable replies)
         │
         ▼
 CloudWatch Logs (/aws/lambda/billionaire-matchmaker)
@@ -43,10 +42,10 @@ All AWS services stay within the free tier.
 
 ### 1. Prerequisites
 
-- AWS CLI configured with an account (same account as bedrockconnect-aws is fine)
+- AWS CLI configured
 - Docker Desktop running
-- OpenTofu installed (`brew install opentofu`)
-- A Bluesky account for the bot
+- OpenTofu (`brew install opentofu`)
+- A Bluesky account for the bot (handle limit: 18 chars)
 
 ### 2. Bootstrap (one-time)
 
@@ -54,36 +53,25 @@ Creates the S3 state bucket, GitHub OIDC provider, and GitHub Actions IAM role.
 
 ```bash
 cd tofu/modules/bootstrap
-
-# If the GitHub OIDC provider already exists (e.g. from bedrockconnect-aws),
-# leave create_oidc_provider = false (the default).
-# If this is a fresh account, add: -var create_oidc_provider=true
-
 tofu init
+# If GitHub OIDC provider already exists in your account, leave create_oidc_provider = false
 tofu apply -var 'github_repo=YOUR_GITHUB_USERNAME/billionaire-matchmaker'
 ```
 
-Copy the output `github_actions_role_arn` and add it as a GitHub Actions secret named
-`AWS_ROLE_ARN` in this repository's settings.
+Add the output `github_actions_role_arn` as a GitHub Actions secret named `AWS_ROLE_ARN`.
 
 ### 3. Deploy
 
 ```bash
-# Copy and fill in terraform.tfvars
 cp tofu/example.tfvars tofu/terraform.tfvars
-
 ./deploy.sh
 ```
 
-`deploy.sh` will:
-1. Ensure the ECR repository exists
-2. Build the Python 3.14 Lambda container image
-3. Push it to ECR
-4. Run `tofu apply` to create/update all infrastructure
+`deploy.sh` creates the ECR repo, builds the Lambda container image (`--platform linux/amd64 --provenance=false`), pushes it, and runs `tofu apply`.
 
 ### 4. Set Bluesky credentials
 
-Create a Bluesky app password: **Settings → Privacy and Security → App Passwords**
+Create an app password: **Settings → Privacy and Security → App Passwords**
 
 ```bash
 aws ssm put-parameter \
@@ -100,6 +88,11 @@ aws ssm put-parameter \
 ### 5. Test
 
 ```bash
+# Offline smoke tests
+pip install -r requirements-dev.txt
+pytest tests/ -v
+
+# Live invocation
 aws lambda invoke \
   --function-name billionaire-matchmaker \
   --payload '{}' \
@@ -107,36 +100,44 @@ aws lambda invoke \
   /tmp/out.json && cat /tmp/out.json
 ```
 
-Or use the **Post Now** button in GitHub Actions → post-now workflow.
+Or trigger via **GitHub Actions → post-now** (workflow_dispatch).
 
 ## Posting cadence
 
-Set in `tofu/terraform.tfvars`:
+Configure in `tofu/terraform.tfvars`, then redeploy:
 
 ```hcl
-schedule_expression = "rate(1 day)"         # production default
-schedule_expression = "rate(11 minutes)"    # ~666-second demo cadence
-schedule_expression = "cron(0 12 * * ? *)"  # noon UTC daily
+schedule_expression = "rate(1 day)"         # default
+schedule_expression = "cron(0 15 * * ? *)"  # 3 PM UTC daily
 ```
-
-Redeploy with `./deploy.sh` after changing.
 
 ## Data maintenance
 
-`lambda/data/billionaires.json` is a Forbes snapshot from 2025. Update it annually after Forbes
-publishes its new list. Net worths are intentionally static — no live scraping.
+All data is bundled as static JSON — no live scraping.
 
-`lambda/data/quotes.json` contains ~75 pre-1928 public-domain quotes.
+| File | Source | Update cadence |
+|---|---|---|
+| `lambda/data/billionaires.json` | Forbes Billionaires list | Annually |
+| `lambda/data/charities.json` | ProPublica / IRS Form 990 | Annually |
+| `lambda/data/quotes.json` | Pre-1928 public domain | As needed |
+
+> **Note:** The ProPublica Nonprofit Explorer search API (`ntee[id]` filter) returns 500
+> errors and omits revenue data from results. Charity data is pre-fetched and stored
+> statically via the organization detail endpoint (`/api/v2/organizations/<ein>.json`).
 
 ## Skills demonstrated
 
 | Skill | Implementation |
 |---|---|
-| IaC (OpenTofu/Terraform) | Modular design in `tofu/modules/` |
-| Serverless | Lambda container image via ECR |
-| Event-driven architecture | EventBridge Scheduler |
+| IaC (OpenTofu) | Modular design — `bootstrap` + `bot` modules |
+| Serverless | Lambda container image via ECR (not zip) |
+| Event-driven | EventBridge Scheduler |
 | Secrets management | SSM Parameter Store SecureString, least-privilege IAM |
-| CI/CD | GitHub Actions with OIDC (no stored credentials) |
+| CI/CD | GitHub Actions with OIDC — no stored AWS credentials |
 | Observability | Structured JSON logging to CloudWatch |
-| Python | API integration (ProPublica, AT Protocol), data wrangling |
+| Python | AT Protocol API, Pillow image generation, static data pipeline |
 | Cost awareness | All services within AWS free tier |
+
+## License
+
+MIT — see [LICENSE](LICENSE). Quote and charity data attribution in [ATTRIBUTIONS](ATTRIBUTIONS).

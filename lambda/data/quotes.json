@@ -1,0 +1,548 @@
+[
+  {
+    "text": "The avarice of mankind is insatiable.",
+    "author": "Aristotle",
+    "year": "~350 BC",
+    "source": "Politics, Book II"
+  },
+  {
+    "text": "He is not poor who has little, but he who hankers after more.",
+    "author": "Seneca",
+    "year": "~65 AD",
+    "source": "Epistulae Morales (Letters to Lucilius)"
+  },
+  {
+    "text": "It is not the man who has too little, but the man who craves more, that is poor.",
+    "author": "Seneca",
+    "year": "~65 AD",
+    "source": "Epistulae Morales (Letters to Lucilius)"
+  },
+  {
+    "text": "Rather than love, than money, than fame, give me truth.",
+    "author": "Henry David Thoreau",
+    "year": "1854",
+    "source": "Walden (1854)"
+  },
+  {
+    "text": "The mass of men lead lives of quiet desperation. What is called resignation is confirmed desperation.",
+    "author": "Henry David Thoreau",
+    "year": "1854",
+    "source": "Walden (1854)"
+  },
+  {
+    "text": "That man is richest whose pleasures are cheapest.",
+    "author": "Henry David Thoreau",
+    "year": "1856",
+    "source": "Journal, March 11, 1856"
+  },
+  {
+    "text": "Money never made a man happy yet, nor will it. There is nothing in its nature to produce happiness.",
+    "author": "Benjamin Franklin",
+    "year": "~1750",
+    "source": "attributed"
+  },
+  {
+    "text": "He does not possess wealth; it possesses him.",
+    "author": "Benjamin Franklin",
+    "year": "~1750",
+    "source": "attributed"
+  },
+  {
+    "text": "Labor is prior to, and independent of, capital. Capital is only the fruit of labor, and could never have existed if labor had not first existed.",
+    "author": "Abraham Lincoln",
+    "year": "1861",
+    "source": "First Annual Message to Congress, December 3, 1861"
+  },
+  {
+    "text": "With malice toward none, with charity for all.",
+    "author": "Abraham Lincoln",
+    "year": "1865",
+    "source": "Second Inaugural Address, March 4, 1865"
+  },
+  {
+    "text": "Of all forms of tyranny the least attractive and the most vulgar is the tyranny of mere wealth, the tyranny of a plutocracy.",
+    "author": "Theodore Roosevelt",
+    "year": "1906",
+    "source": "The New Nationalism speech, Osawatomie, Kansas, August 31, 1910"
+  },
+  {
+    "text": "No man can be a good citizen who is not a good neighbor.",
+    "author": "Theodore Roosevelt",
+    "year": "1907",
+    "source": "attributed"
+  },
+  {
+    "text": "Behind the ostensible government sits enthroned an invisible government owing no allegiance and acknowledging no responsibility to the people.",
+    "author": "Theodore Roosevelt",
+    "year": "1912",
+    "source": "Progressive Party platform, 1912"
+  },
+  {
+    "text": "This country would not be a land of opportunity, America could not be America, if the people were shackled with inherited privilege.",
+    "author": "Theodore Roosevelt",
+    "year": "1910",
+    "source": "attributed"
+  },
+  {
+    "text": "The test of our progress is not whether we add more to the abundance of those who have much; it is whether we provide enough for those who have too little.",
+    "author": "Franklin D. Roosevelt",
+    "year": "1937",
+    "source": "Second Inaugural Address, January 20, 1937"
+  },
+  {
+    "text": "We have always known that heedless self-interest was bad morals; we know now that it is bad economics.",
+    "author": "Franklin D. Roosevelt",
+    "year": "1937",
+    "source": "Second Inaugural Address, January 20, 1937"
+  },
+  {
+    "text": "The only thing we have to fear is fear itself — nameless, unreasoning, unjustified terror which paralyzes needed efforts to convert retreat into advance.",
+    "author": "Franklin D. Roosevelt",
+    "year": "1933",
+    "source": "First Inaugural Address, March 4, 1933"
+  },
+  {
+    "text": "The measure of a man's character is what he would do if he knew he never would be found out.",
+    "author": "Thomas Babington Macaulay",
+    "year": "1843",
+    "source": "attributed — provenance uncertain"
+  },
+  {
+    "text": "No man who continues to add something to the material, intellectual and moral well-being of the place in which he lives is left long without proper reward.",
+    "author": "Booker T. Washington",
+    "year": "1901",
+    "source": "attributed"
+  },
+  {
+    "text": "There is no class so pitiably wretched as that which possesses money and nothing else.",
+    "author": "Andrew Carnegie",
+    "year": "1889",
+    "source": "The Gospel of Wealth (1889)"
+  },
+  {
+    "text": "The man who dies thus rich dies disgraced.",
+    "author": "Andrew Carnegie",
+    "year": "1889",
+    "source": "The Gospel of Wealth (1889)"
+  },
+  {
+    "text": "Surplus wealth is a sacred trust which its possessor is bound to administer in his lifetime for the good of the community.",
+    "author": "Andrew Carnegie",
+    "year": "1889",
+    "source": "The Gospel of Wealth (1889)"
+  },
+  {
+    "text": "It is a shame for a man to desire honor simply as a result of his noble ancestors, and not deserve it.",
+    "author": "Aristotle",
+    "year": "~350 BC",
+    "source": "Nicomachean Ethics"
+  },
+  {
+    "text": "The secret of happiness, you see, is not found in seeking more, but in developing the capacity to enjoy less.",
+    "author": "Socrates",
+    "year": "~400 BC",
+    "source": "attributed — provenance uncertain"
+  },
+  {
+    "text": "He who is not contented with what he has would not be contented with what he would like to have.",
+    "author": "Socrates",
+    "year": "~400 BC",
+    "source": "attributed — provenance uncertain"
+  },
+  {
+    "text": "Until the great mass of the people shall be filled with the sense of responsibility for each other's welfare, social justice can never be attained.",
+    "author": "Helen Keller",
+    "year": "1927",
+    "source": "attributed"
+  },
+  {
+    "text": "The country is governed for the richest, for the corporations, the bankers, the land speculators, and for the exploiters of labor.",
+    "author": "Helen Keller",
+    "year": "1911",
+    "source": "The Handmaiden of the Lord (1911)"
+  },
+  {
+    "text": "There is a lie in the smile of the man who owns all and gives nothing; there is truth in the tears of the man who owns nothing and gives all.",
+    "author": "Leo Tolstoy",
+    "year": "~1890",
+    "source": "attributed"
+  },
+  {
+    "text": "Everyone thinks of changing the world, but no one thinks of changing himself.",
+    "author": "Leo Tolstoy",
+    "year": "~1900",
+    "source": "attributed — appears in Three Methods of Reform (1900)"
+  },
+  {
+    "text": "The two most powerful warriors are patience and time.",
+    "author": "Leo Tolstoy",
+    "year": "1869",
+    "source": "War and Peace (1869)"
+  },
+  {
+    "text": "If you want to be happy, be.",
+    "author": "Leo Tolstoy",
+    "year": "~1880",
+    "source": "attributed"
+  },
+  {
+    "text": "Work is the only remedy; there is no other.",
+    "author": "Mark Twain",
+    "year": "~1880",
+    "source": "attributed"
+  },
+  {
+    "text": "October. This is one of the peculiarly dangerous months to speculate in stocks. The others are July, January, September, April, November, May, March, June, December, August, and February.",
+    "author": "Mark Twain",
+    "year": "1894",
+    "source": "Pudd'nhead Wilson (1894)"
+  },
+  {
+    "text": "The cry of the poor is not always just, but if you don't listen to it, you will never know what justice is.",
+    "author": "Howard Zinn",
+    "year": "1980",
+    "source": "attributed"
+  },
+  {
+    "text": "We know that no one ever seizes power with the intention of relinquishing it.",
+    "author": "George Orwell",
+    "year": "1949",
+    "source": "Nineteen Eighty-Four (1949)"
+  },
+  {
+    "text": "Who controls the past controls the future. Who controls the present controls the past.",
+    "author": "George Orwell",
+    "year": "1949",
+    "source": "Nineteen Eighty-Four (1949)"
+  },
+  {
+    "text": "In a time of universal deceit, telling the truth is a revolutionary act.",
+    "author": "George Orwell",
+    "year": "~1944",
+    "source": "attributed — not verified in Orwell's published works"
+  },
+  {
+    "text": "Some are born great, some achieve greatness, and some have greatness thrust upon them.",
+    "author": "William Shakespeare",
+    "year": "1602",
+    "source": "Twelfth Night, Act II, Scene 5 (1602)"
+  },
+  {
+    "text": "The robbed that smiles, steals something from the thief.",
+    "author": "William Shakespeare",
+    "year": "1603",
+    "source": "Othello, Act I, Scene 3 (1603)"
+  },
+  {
+    "text": "Poor and content is rich, and rich enough.",
+    "author": "William Shakespeare",
+    "year": "1603",
+    "source": "Othello, Act III, Scene 3 (1603)"
+  },
+  {
+    "text": "Property is theft.",
+    "author": "Pierre-Joseph Proudhon",
+    "year": "1840",
+    "source": "What is Property? (1840)"
+  },
+  {
+    "text": "The history of all hitherto existing society is the history of class struggles.",
+    "author": "Karl Marx and Friedrich Engels",
+    "year": "1848",
+    "source": "The Communist Manifesto (1848)"
+  },
+  {
+    "text": "From each according to his ability, to each according to his needs.",
+    "author": "Karl Marx",
+    "year": "1875",
+    "source": "Critique of the Gotha Programme (1875)"
+  },
+  {
+    "text": "Capital is dead labour, that, vampire-like, only lives by sucking living labour.",
+    "author": "Karl Marx",
+    "year": "1867",
+    "source": "Capital, Volume I (1867)"
+  },
+  {
+    "text": "While there is a lower class, I am in it; while there is a criminal element, I am of it; while there is a soul in prison, I am not free.",
+    "author": "Eugene V. Debs",
+    "year": "1918",
+    "source": "Statement at sentencing, Cleveland, Ohio, September 18, 1918"
+  },
+  {
+    "text": "I am for socialism, disarmament, and the abolition of the state, in its present form.",
+    "author": "Eugene V. Debs",
+    "year": "1897",
+    "source": "attributed"
+  },
+  {
+    "text": "It is difficult to get a man to understand something when his salary depends upon his not understanding it.",
+    "author": "Upton Sinclair",
+    "year": "1935",
+    "source": "I, Candidate for Governor: And How I Got Licked (1935)"
+  },
+  {
+    "text": "They have stolen the future. We are fighting to take it back.",
+    "author": "Upton Sinclair",
+    "year": "1906",
+    "source": "attributed — provenance uncertain"
+  },
+  {
+    "text": "The world is a fine place and worth fighting for.",
+    "author": "Ernest Hemingway",
+    "year": "1940",
+    "source": "For Whom the Bell Tolls (1940)"
+  },
+  {
+    "text": "The rich are only defeated when running for their lives.",
+    "author": "C.L.R. James",
+    "year": "1938",
+    "source": "The Black Jacobins (1938)"
+  },
+  {
+    "text": "Almost everything that distinguishes the modern world from earlier centuries is attributable to science.",
+    "author": "Bertrand Russell",
+    "year": "1931",
+    "source": "The Scientific Outlook (1931)"
+  },
+  {
+    "text": "Poverty is the parent of revolution and crime.",
+    "author": "Aristotle",
+    "year": "~350 BC",
+    "source": "Politics, Book II"
+  },
+  {
+    "text": "In a country well governed, poverty is something to be ashamed of. In a country badly governed, wealth is something to be ashamed of.",
+    "author": "Confucius",
+    "year": "~500 BC",
+    "source": "Analects, Book VIII"
+  },
+  {
+    "text": "He who is not satisfied with a little, is satisfied with nothing.",
+    "author": "Epicurus",
+    "year": "~300 BC",
+    "source": "Letter to Menoeceus"
+  },
+  {
+    "text": "Wealth consists not in having great possessions, but in having few wants.",
+    "author": "Epictetus",
+    "year": "~100 AD",
+    "source": "Enchiridion"
+  },
+  {
+    "text": "Make the best use of what is in your power, and take the rest as it happens.",
+    "author": "Epictetus",
+    "year": "~100 AD",
+    "source": "Enchiridion"
+  },
+  {
+    "text": "Do not spoil what you have by desiring what you have not; remember that what you now have was once among the things you only hoped for.",
+    "author": "Epicurus",
+    "year": "~300 BC",
+    "source": "attributed — appears in various Epicurean collections"
+  },
+  {
+    "text": "I have no money, no resources, no hopes. I am the happiest man alive.",
+    "author": "Henry Miller",
+    "year": "1934",
+    "source": "Tropic of Cancer (1934)"
+  },
+  {
+    "text": "Give me your tired, your poor, your huddled masses yearning to breathe free.",
+    "author": "Emma Lazarus",
+    "year": "1883",
+    "source": "The New Colossus (1883), inscribed on the Statue of Liberty"
+  },
+  {
+    "text": "The only foes that threaten America are the enemies at home, and those are ignorance, superstition, and incompetence.",
+    "author": "Elbert Hubbard",
+    "year": "1911",
+    "source": "attributed"
+  },
+  {
+    "text": "Freedom is always and exclusively freedom for the one who thinks differently.",
+    "author": "Rosa Luxemburg",
+    "year": "1918",
+    "source": "The Russian Revolution (written 1918, published 1922)"
+  },
+  {
+    "text": "Those who do not move do not notice their chains.",
+    "author": "Rosa Luxemburg",
+    "year": "~1910",
+    "source": "attributed — provenance uncertain"
+  },
+  {
+    "text": "The most violent element in society is ignorance.",
+    "author": "Emma Goldman",
+    "year": "1910",
+    "source": "Anarchism and Other Essays (1910)"
+  },
+  {
+    "text": "Ask for work. If they don't give you work, ask for bread. If they do not give you work or bread, then take bread.",
+    "author": "Emma Goldman",
+    "year": "~1893",
+    "source": "attributed — speech circa 1893"
+  },
+  {
+    "text": "Pray for the dead and fight like hell for the living.",
+    "author": "Mother Jones",
+    "year": "~1900",
+    "source": "attributed — her lifelong motto"
+  },
+  {
+    "text": "The good we secure for ourselves is precarious and uncertain until it is secured for all of us and incorporated into our common life.",
+    "author": "Jane Addams",
+    "year": "1902",
+    "source": "Democracy and Social Ethics (1902)"
+  },
+  {
+    "text": "The way to right wrongs is to turn the light of truth upon them.",
+    "author": "Ida B. Wells",
+    "year": "1892",
+    "source": "Southern Horrors: Lynch Law in All Its Phases (1892)"
+  },
+  {
+    "text": "There is always more misery among the lower classes than there is humanity in the higher.",
+    "author": "Victor Hugo",
+    "year": "1862",
+    "source": "Les Misérables (1862)"
+  },
+  {
+    "text": "He who opens a school door, closes a prison.",
+    "author": "Victor Hugo",
+    "year": "~1870",
+    "source": "attributed"
+  },
+  {
+    "text": "First comes a full stomach, then comes ethics.",
+    "author": "Bertolt Brecht",
+    "year": "1928",
+    "source": "The Threepenny Opera (1928)"
+  },
+  {
+    "text": "The worst sin towards our fellow creatures is not to hate them, but to be indifferent to them: that's the essence of inhumanity.",
+    "author": "George Bernard Shaw",
+    "year": "1897",
+    "source": "The Devil's Disciple (1897)"
+  },
+  {
+    "text": "The reasonable man adapts himself to the world; the unreasonable one persists in trying to adapt the world to himself. Therefore all progress depends on the unreasonable man.",
+    "author": "George Bernard Shaw",
+    "year": "1903",
+    "source": "Man and Superman, Maxims for Revolutionists (1903)"
+  },
+  {
+    "text": "I have never read Marx's Capital, but I have the marks of capital all over me.",
+    "author": "Big Bill Haywood",
+    "year": "~1915",
+    "source": "Big Bill Haywood's Book: The Autobiography of William D. Haywood (1929)"
+  },
+  {
+    "text": "In nature, nothing exists alone.",
+    "author": "Rachel Carson",
+    "year": "1962",
+    "source": "Silent Spring (1962)"
+  },
+  {
+    "text": "The more clearly we can focus our attention on the wonders and realities of the universe about us, the less taste we shall have for destruction.",
+    "author": "Rachel Carson",
+    "year": "1956",
+    "source": "The Sense of Wonder (1956)"
+  },
+  {
+    "text": "We are called to assist the Earth to heal her wounds and in the process heal our own.",
+    "author": "Wangari Maathai",
+    "year": "2004",
+    "source": "Unbowed: A Memoir (2004)"
+  },
+  {
+    "text": "Nature is not a resource for the economy. The economy is a resource for life.",
+    "author": "Vandana Shiva",
+    "year": "~2010",
+    "source": "attributed"
+  },
+  {
+    "text": "What is the use of a house if you haven't got a tolerable planet to put it on?",
+    "author": "Henry David Thoreau",
+    "year": "1860",
+    "source": "Letter to Harrison Blake, May 20, 1860"
+  },
+  {
+    "text": "When one tugs at a single thing in nature, he finds it attached to the rest of the world.",
+    "author": "John Muir",
+    "year": "~1900",
+    "source": "My First Summer in the Sierra (1911)"
+  },
+  {
+    "text": "Your silence will not protect you.",
+    "author": "Audre Lorde",
+    "year": "1980",
+    "source": "The Cancer Journals (1980)"
+  },
+  {
+    "text": "It is not our differences that divide us. It is our inability to recognize, accept, and celebrate those differences.",
+    "author": "Audre Lorde",
+    "year": "1986",
+    "source": "Our Dead Behind Us (1986)"
+  },
+  {
+    "text": "I am not free while any woman is unfree, even when her shackles are very different from my own.",
+    "author": "Audre Lorde",
+    "year": "1981",
+    "source": "Keynote address, National Women's Studies Association, 1981"
+  },
+  {
+    "text": "No pride for some of us without liberation for all of us.",
+    "author": "Marsha P. Johnson",
+    "year": "~1970",
+    "source": "attributed — various speeches, circa 1970s"
+  },
+  {
+    "text": "I'm sick and tired of being sick and tired.",
+    "author": "Fannie Lou Hamer",
+    "year": "1964",
+    "source": "Speech at the Democratic National Convention, Atlantic City, August 22, 1964"
+  },
+  {
+    "text": "The moment we choose to love we begin to move against domination, against oppression.",
+    "author": "bell hooks",
+    "year": "1994",
+    "source": "Outlaw Culture (1994)"
+  },
+  {
+    "text": "The question is not whether we can afford to invest in every child; it is whether we can afford not to.",
+    "author": "Marian Wright Edelman",
+    "year": "attributed",
+    "source": "attributed"
+  },
+  {
+    "text": "No one has a right to sit down and feel hopeless. There is too much work to do.",
+    "author": "Dorothy Day",
+    "year": "attributed",
+    "source": "attributed"
+  },
+  {
+    "text": "Hope will never be silent.",
+    "author": "Harvey Milk",
+    "year": "1978",
+    "source": "attributed — various 1978 speeches"
+  },
+  {
+    "text": "Anyone who has ever struggled with poverty knows how extremely expensive it is to be poor.",
+    "author": "James Baldwin",
+    "year": "~1961",
+    "source": "Nobody Knows My Name (1961)"
+  },
+  {
+    "text": "The most dangerous creation of any society is the man who has nothing to lose.",
+    "author": "James Baldwin",
+    "year": "1963",
+    "source": "The Fire Next Time (1963)"
+  },
+  {
+    "text": "To be afraid is to behave as if the truth were not true.",
+    "author": "Bayard Rustin",
+    "year": "attributed",
+    "source": "attributed"
+  }
+]

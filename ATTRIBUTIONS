@@ -1,0 +1,22 @@
+DejaVu Fonts
+------------
+The DejaVu fonts bundled in the Docker image are derived from Bitstream Vera Fonts.
+Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.
+DejaVu changes are in public domain. See https://dejavu-fonts.github.io for details.
+
+Charity data
+------------
+Nonprofit financial data is sourced from the IRS Form 990 via the ProPublica
+Nonprofit Explorer API (https://projects.propublica.org/nonprofits/). IRS data
+is in the public domain.
+
+Billionaire data
+----------------
+Net worth figures are drawn from the Forbes Billionaires list and represent
+point-in-time estimates. Forbes is the source of record; figures are used here
+for commentary and criticism.
+
+Quotes
+------
+Quotations are attributed to their authors in lambda/data/quotes.json.
+Short quotations are used for non-commercial political commentary under fair use.

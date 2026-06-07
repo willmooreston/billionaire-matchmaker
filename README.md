@@ -5,7 +5,7 @@ would fund for 100+ years, and shows the math — with a public-domain anti-gree
 attached as an image. Posts once a day to [@billionaire-match.bsky.social](https://bsky.app/profile/billionaire-match.bsky.social).
 
 **Stack:** Python 3.14 · AWS Lambda (container image) · Amazon ECR · EventBridge Scheduler
-· SSM Parameter Store · OpenTofu · GitHub Actions (OIDC)
+· SSM Parameter Store · DynamoDB · OpenTofu · GitHub Actions (OIDC)
 
 ## Sample post
 
@@ -25,6 +25,7 @@ EventBridge Scheduler (rate: 1 day)
         ▼
 AWS Lambda (Python 3.14 container)
         ├── SSM Parameter Store → Bluesky credentials
+        ├── DynamoDB → recent billionaire/charity history (30-day dedup)
         ├── data/billionaires.json → random billionaire
         ├── data/charities.json   → random qualifying charity
         └── data/quotes.json      → random public-domain quote
@@ -134,19 +135,6 @@ All data is bundled as static JSON — no live scraping.
 > **Note:** The ProPublica Nonprofit Explorer search API (`ntee[id]` filter) returns 500
 > errors and omits revenue data from results. Charity data is pre-fetched and stored
 > statically via the organization detail endpoint (`/api/v2/organizations/<ein>.json`).
-
-## Skills demonstrated
-
-| Skill | Implementation |
-|---|---|
-| IaC (OpenTofu) | Modular design — `bootstrap` + `bot` modules |
-| Serverless | Lambda container image via ECR (not zip) |
-| Event-driven | EventBridge Scheduler |
-| Secrets management | SSM Parameter Store SecureString, least-privilege IAM |
-| CI/CD | GitHub Actions with OIDC — no stored AWS credentials |
-| Observability | Structured JSON logging to CloudWatch |
-| Python | AT Protocol API, Pillow image generation, static data pipeline |
-| Cost awareness | All services within AWS free tier |
 
 ## License
 

@@ -10,5 +10,6 @@ def load() -> list[dict]:
         return json.load(f)
 
 
-def pick_random() -> dict:
-    return random.choice(load())
+def pick_random(exclude: frozenset = frozenset()) -> dict:
+    pool = [b for b in load() if b["name"] not in exclude]
+    return random.choice(pool if pool else load())

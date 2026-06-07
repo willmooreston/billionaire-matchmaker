@@ -8,6 +8,7 @@ import billionaires
 import bluesky
 import charities
 import formatter
+import history
 import image_generator
 import quotes
 
@@ -24,10 +25,13 @@ def _get_ssm(name: str) -> str:
 
 
 def lambda_handler(event, context):
-    billionaire = billionaires.pick_random()
+    used_billionaires = history.get_used_ids("billionaire")
+    used_charities = history.get_used_ids("charity")
+
+    billionaire = billionaires.pick_random(exclude=used_billionaires)
     logger.info("Selected billionaire: %s ($%.0fB)", billionaire["name"], billionaire["net_worth_usd"] / 1e9)
 
-    charity = charities.find_qualifying(billionaire["net_worth_usd"])
+    charity = charities.find_qualifying(billionaire["net_worth_usd"], exclude=used_charities)
     if charity is None:
         logger.error("No qualifying charity found for net worth $%.0fB", billionaire["net_worth_usd"] / 1e9)
         return {"statusCode": 500, "body": "No qualifying charity found"}
@@ -49,6 +53,8 @@ def lambda_handler(event, context):
 
     result = bluesky.post(handle, app_password, post_text, facets, img_bytes, img_alt)
     logger.info("Posted successfully: %s", json.dumps(result))
+
+    history.record_pair(billionaire["name"], charity["ein"])
 
     return {
         "statusCode": 200,

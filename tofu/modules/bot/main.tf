@@ -28,6 +28,30 @@ resource "aws_ecr_lifecycle_policy" "bot" {
   })
 }
 
+# ── DynamoDB history table ────────────────────────────────────────────────────
+
+resource "aws_dynamodb_table" "history" {
+  name         = "${var.project_name}-history"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "entity_type"
+  range_key    = "entity_id"
+
+  attribute {
+    name = "entity_type"
+    type = "S"
+  }
+
+  attribute {
+    name = "entity_id"
+    type = "S"
+  }
+
+  ttl {
+    attribute_name = "ttl"
+    enabled        = true
+  }
+}
+
 # ── IAM: Lambda execution role ───────────────────────────────────────────────
 
 resource "aws_iam_role" "lambda" {
@@ -56,6 +80,15 @@ resource "aws_iam_role_policy" "lambda" {
         Resource = [
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/${var.project_name}/*"
         ]
+      },
+      {
+        Sid    = "DynamoDB"
+        Effect = "Allow"
+        Action = [
+          "dynamodb:Query",
+          "dynamodb:PutItem",
+        ]
+        Resource = aws_dynamodb_table.history.arn
       },
       {
         Sid    = "Logs"
@@ -131,6 +164,7 @@ resource "aws_lambda_function" "bot" {
     variables = {
       SSM_PARAM_HANDLE   = aws_ssm_parameter.bluesky_handle.name
       SSM_PARAM_PASSWORD = aws_ssm_parameter.bluesky_app_password.name
+      DYNAMODB_TABLE     = aws_dynamodb_table.history.name
     }
   }
 

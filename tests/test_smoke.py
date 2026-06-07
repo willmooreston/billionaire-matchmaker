@@ -126,5 +126,41 @@ def test_find_qualifying_returns_charity():
 
 def test_find_qualifying_none_for_small_net_worth():
     import charities
-    # $1 net worth should never qualify anything
     assert charities.find_qualifying(1) is None
+
+
+# ── History / deduplication ────────────────────────────────────────────────────
+
+def test_pick_random_excludes_known():
+    import billionaires
+    all_names = {b["name"] for b in billionaires.load()}
+    one = next(iter(all_names))
+    rest = all_names - {one}
+    result = billionaires.pick_random(exclude=frozenset(rest))
+    assert result["name"] == one
+
+
+def test_pick_random_falls_back_when_all_excluded():
+    import billionaires
+    all_names = frozenset(b["name"] for b in billionaires.load())
+    result = billionaires.pick_random(exclude=all_names)
+    assert result is not None
+
+
+def test_find_qualifying_excludes_known():
+    import charities
+    net_worth = 200_000_000_000
+    all_qualifying = [c for c in charities._CHARITIES if net_worth >= c["total_revenue"] * 100]
+    assert len(all_qualifying) >= 2
+    keep = all_qualifying[0]
+    exclude = frozenset(c["ein"] for c in all_qualifying[1:])
+    result = charities.find_qualifying(net_worth, exclude=exclude)
+    assert result["ein"] == keep["ein"]
+
+
+def test_find_qualifying_falls_back_when_all_excluded():
+    import charities
+    net_worth = 200_000_000_000
+    all_eins = frozenset(c["ein"] for c in charities._CHARITIES)
+    result = charities.find_qualifying(net_worth, exclude=all_eins)
+    assert result is not None

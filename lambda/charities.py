@@ -8,13 +8,11 @@ with open(_DATA_FILE) as _f:
     _CHARITIES = json.load(_f)
 
 
-def find_qualifying(net_worth_usd: int, min_years: int = 100) -> dict | None:
+def find_qualifying(net_worth_usd: int, exclude: frozenset = frozenset(), min_years: int = 100) -> dict | None:
     """Return a random charity whose annual revenue * min_years <= net_worth_usd."""
-    qualifying = [
-        c for c in _CHARITIES
-        if net_worth_usd >= c["total_revenue"] * min_years
-    ]
-    return random.choice(qualifying) if qualifying else None
+    all_qualifying = [c for c in _CHARITIES if net_worth_usd >= c["total_revenue"] * min_years]
+    pool = [c for c in all_qualifying if c["ein"] not in exclude]
+    return random.choice(pool if pool else all_qualifying) if all_qualifying else None
 
 
 def format_revenue(revenue_usd: int) -> str:

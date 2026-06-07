@@ -10,6 +10,7 @@ quote rendered as an attached image.
 - **IaC**: OpenTofu (`tofu/`)
 - **Scheduler**: EventBridge Scheduler → Lambda (daily, ~03:18 UTC)
 - **Secrets**: SSM Parameter Store SecureString
+- **Dedup**: DynamoDB (PAY_PER_REQUEST) — tracks recent pairings, 30-day TTL
 - **CI**: GitHub Actions (OIDC, no stored creds)
 
 ## Layout
@@ -23,10 +24,19 @@ lambda/          Python app code + bundled data
 tofu/            OpenTofu root + modules
   modules/
     bootstrap/   One-time: S3 state bucket + GitHub OIDC
-    bot/         Lambda, ECR, EventBridge, SSM, CloudWatch, IAM
+    bot/         Lambda, ECR, EventBridge, SSM, DynamoDB, CloudWatch, IAM
 tests/           Offline smoke tests (pytest)
 Dockerfile       Lambda container image
 deploy.sh        Local build + deploy
+```
+
+## Before pushing
+
+Run the security review and smoke tests before any `git push`:
+
+```bash
+/security-review   # Claude Code skill — reviews staged changes for vulnerabilities
+pytest tests/ -v   # offline smoke tests
 ```
 
 ## Common commands

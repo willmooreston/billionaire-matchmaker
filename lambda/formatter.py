@@ -1,6 +1,7 @@
 from charities import format_revenue
 
-_HASHTAG = "\n\n#eattherich"
+_HASHTAGS = "\n\n#eattherich #taxtherich"
+_TAG_LIST = ["eattherich", "taxtherich"]
 
 
 def build_post(billionaire: dict, charity: dict) -> tuple[str, list[dict]]:
@@ -25,7 +26,7 @@ def build_post(billionaire: dict, charity: dict) -> tuple[str, list[dict]]:
         f"{charity['name']} ({revenue_str}/yr budget{year_suffix})."
     )
 
-    post_text = f"{line1}\n\n{line2}{_HASHTAG}"
+    post_text = f"{line1}\n\n{line2}{_HASHTAGS}"
     facets = _build_facets(post_text, billionaire, charity)
     return post_text, facets
 
@@ -38,6 +39,8 @@ def _build_facets(text: str, billionaire: dict, charity: dict) -> list[dict]:
     charity_url = charity.get("source_url", "")
     if charity_url:
         facets += _find_facets(encoded, charity_name, charity_url)
+    for tag in _TAG_LIST:
+        facets += _find_tag_facets(encoded, tag)
     return facets
 
 
@@ -49,4 +52,15 @@ def _find_facets(encoded_text: bytes, search_str: str, uri: str) -> list[dict]:
     return [{
         "index": {"byteStart": idx, "byteEnd": idx + len(search_bytes)},
         "features": [{"$type": "app.bsky.richtext.facet#link", "uri": uri}],
+    }]
+
+
+def _find_tag_facets(encoded_text: bytes, tag: str) -> list[dict]:
+    search_bytes = f"#{tag}".encode("utf-8")
+    idx = encoded_text.find(search_bytes)
+    if idx == -1:
+        return []
+    return [{
+        "index": {"byteStart": idx, "byteEnd": idx + len(search_bytes)},
+        "features": [{"$type": "app.bsky.richtext.facet#tag", "tag": tag}],
     }]

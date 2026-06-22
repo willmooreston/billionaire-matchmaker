@@ -5,7 +5,7 @@ import boto3
 from boto3.dynamodb.conditions import Key
 
 _TABLE_NAME = os.environ.get("DYNAMODB_TABLE", "")
-_TTL_DAYS = 30
+_TTL_DAYS = 14
 
 
 def _table():
@@ -16,8 +16,12 @@ def get_used_ids(entity_type: str) -> frozenset:
     """Return IDs posted in the last TTL_DAYS days."""
     if not _TABLE_NAME:
         return frozenset()
+    now = int(time.time())
     response = _table().query(
-        KeyConditionExpression=Key("entity_type").eq(entity_type)
+        KeyConditionExpression=Key("entity_type").eq(entity_type),
+        FilterExpression="#ttl > :now",
+        ExpressionAttributeNames={"#ttl": "ttl"},
+        ExpressionAttributeValues={":now": now},
     )
     return frozenset(item["entity_id"] for item in response.get("Items", []))
 

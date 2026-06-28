@@ -211,7 +211,7 @@ resource "aws_scheduler_schedule" "post" {
   }
 
   schedule_expression          = var.schedule_expression
-  schedule_expression_timezone = "UTC"
+  schedule_expression_timezone = var.schedule_expression_timezone
 
   target {
     arn      = aws_lambda_function.bot.arn

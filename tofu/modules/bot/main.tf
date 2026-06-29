@@ -112,11 +112,16 @@ resource "aws_ecr_repository_policy" "lambda_pull" {
     Statement = [{
       Sid    = "LambdaPull"
       Effect = "Allow"
-      Principal = { AWS = aws_iam_role.lambda.arn }
+      Principal = { Service = "lambda.amazonaws.com" }
       Action = [
         "ecr:GetDownloadUrlForLayer",
         "ecr:BatchGetImage",
       ]
+      Condition = {
+        StringEquals = {
+          "aws:sourceAccount" = data.aws_caller_identity.current.account_id
+        }
+      }
     }]
   })
 }

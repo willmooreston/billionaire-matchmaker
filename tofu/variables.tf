@@ -19,3 +19,8 @@ variable "schedule_expression_timezone" {
   description = "IANA timezone for the schedule expression. Only meaningful for cron expressions."
   default     = "UTC"
 }
+
+variable "alert_email" {
+  type        = string
+  description = "Email address to receive CloudWatch alarm notifications."
+}

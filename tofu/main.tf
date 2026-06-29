@@ -18,4 +18,5 @@ module "bot" {
   image_uri           = var.image_uri
   schedule_expression          = var.schedule_expression
   schedule_expression_timezone = var.schedule_expression_timezone
+  alert_email                  = var.alert_email
 }

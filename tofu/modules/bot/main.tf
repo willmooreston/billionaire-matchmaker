@@ -204,6 +204,50 @@ resource "aws_iam_role_policy" "scheduler" {
   })
 }
 
+# ── SNS + CloudWatch invocation alerts ───────────────────────────────────────
+
+resource "aws_sns_topic" "alerts" {
+  name = "${var.project_name}-alerts"
+}
+
+resource "aws_sns_topic_subscription" "email" {
+  topic_arn = aws_sns_topic.alerts.arn
+  protocol  = "email"
+  endpoint  = var.alert_email
+}
+
+resource "aws_cloudwatch_metric_alarm" "lambda_not_invoked" {
+  alarm_name          = "${var.project_name}-not-invoked-24h"
+  alarm_description   = "Lambda was not invoked in the last 24 hours"
+  namespace           = "AWS/Lambda"
+  metric_name         = "Invocations"
+  dimensions          = { FunctionName = aws_lambda_function.bot.function_name }
+  statistic           = "Sum"
+  period              = 86400
+  evaluation_periods  = 1
+  threshold           = 1
+  comparison_operator = "LessThanThreshold"
+  treat_missing_data  = "breaching"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
+  ok_actions          = [aws_sns_topic.alerts.arn]
+}
+
+resource "aws_cloudwatch_metric_alarm" "lambda_invoked_too_many" {
+  alarm_name          = "${var.project_name}-invoked-more-than-once-24h"
+  alarm_description   = "Lambda was invoked more than once in the last 24 hours"
+  namespace           = "AWS/Lambda"
+  metric_name         = "Invocations"
+  dimensions          = { FunctionName = aws_lambda_function.bot.function_name }
+  statistic           = "Sum"
+  period              = 86400
+  evaluation_periods  = 1
+  threshold           = 1
+  comparison_operator = "GreaterThanThreshold"
+  treat_missing_data  = "notBreaching"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
+  ok_actions          = [aws_sns_topic.alerts.arn]
+}
+
 # ── EventBridge Scheduler ─────────────────────────────────────────────────────
 
 resource "aws_scheduler_schedule" "post" {
